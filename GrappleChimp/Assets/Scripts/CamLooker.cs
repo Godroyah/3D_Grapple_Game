@@ -54,7 +54,7 @@ public class CamLooker : MonoBehaviour
             transform.localRotation = Quaternion.identity;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             transform.Rotate(Vector3.left * mouseY);
         }

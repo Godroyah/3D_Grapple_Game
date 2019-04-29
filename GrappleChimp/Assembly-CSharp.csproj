@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamLooker.cs" />
     <Compile Include="Assets\Scripts\Grappler.cs" />
+    <Compile Include="Assets\Scripts\Guard_AI.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/ncazm/Documents/Fitchburg Spring 2019/3D Game/3D Game 2 - GrappleGun/3D_Grapple_Game/3D_Grapple_Game/GrappleChimp/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>

@@ -4,17 +4,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    public float moveSpeed;
+    private float moveSpeed;
+    public float fullSpeed;
+    public float sneakSpeed;
+    public bool sneaking;
 
 	// Use this for initialization
 	void Start ()
     {
-		
+        moveSpeed = fullSpeed;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        if(Input.GetButton("Sneak"))
+        {
+            sneaking = true;
+        }
+        else
+        {
+            sneaking = false;
+        }
+
+        if(sneaking)
+        {
+            moveSpeed = sneakSpeed;
+        }
+        else
+        {
+            moveSpeed = fullSpeed;
+        }
         PlayerMovement();
     }
 
