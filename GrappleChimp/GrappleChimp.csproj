@@ -308,6 +308,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CamLooker.cs" />
     <Compile Include="Assets\Scripts\Grappler.cs" />
+    <Compile Include="Assets\Scripts\Guard_AI.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
   </ItemGroup>
   <ItemGroup>
