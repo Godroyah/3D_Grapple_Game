@@ -136,7 +136,11 @@ MonoBehaviour:
   m_MaxSize: {x: 18006, y: 14021}
   vertical: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 50
+=======
+  controlID: 73
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
   controlID: 73
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
@@ -164,7 +168,11 @@ MonoBehaviour:
   m_MaxSize: {x: 10004, y: 14021}
   vertical: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 51
+=======
+  controlID: 74
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
   controlID: 74
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
@@ -192,6 +200,9 @@ MonoBehaviour:
 =======
   m_MinSize: {x: 204, y: 221}
   m_MaxSize: {x: 4004, y: 4021}
+<<<<<<< HEAD
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
+=======
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
   m_ActualView: {fileID: 13}
   m_Panes:
@@ -391,9 +402,15 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_Position:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -35.66447, y: -19.425669, z: 12.220429}
     speed: 2
     m_Value: {x: -35.66447, y: -19.425669, z: 12.220429}
+=======
+    m_Target: {x: -63.151386, y: 0.87984395, z: -13.602109}
+    speed: 2
+    m_Value: {x: -63.151386, y: 0.87984395, z: -13.602109}
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
     m_Target: {x: -63.151386, y: 0.87984395, z: -13.602109}
     speed: 2
@@ -427,6 +444,7 @@ MonoBehaviour:
       m_Value: 0
   m_Rotation:
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.1498659, y: 0.61348915, z: -0.1200565, w: -0.7660012}
     speed: 2
     m_Value: {x: -0.14986588, y: 0.6134891, z: -0.12005649, w: -0.7660011}
@@ -434,6 +452,15 @@ MonoBehaviour:
     m_Target: 69.75407
     speed: 2
     m_Value: 69.75407
+=======
+    m_Target: {x: 0.20613132, y: 0.7307422, z: -0.25079086, w: 0.6005246}
+    speed: 2
+    m_Value: {x: 0.2061313, y: 0.73074216, z: -0.25079083, w: 0.60052454}
+  m_Size:
+    m_Target: 73.23471
+    speed: 2
+    m_Value: 73.23471
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
     m_Target: {x: 0.20613132, y: 0.7307422, z: -0.25079086, w: 0.6005246}
     speed: 2
@@ -555,17 +582,23 @@ MonoBehaviour:
     m_SearchArea: 1
     m_Folders:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - Assets/Scenes
   m_ViewMode: 1
   m_StartGridSize: 58
   m_LastFolders:
   - Assets/Scenes
 =======
+=======
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
     - Assets/Prefabs
   m_ViewMode: 1
   m_StartGridSize: 58
   m_LastFolders:
   - Assets/Prefabs
+<<<<<<< HEAD
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
+=======
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
   m_LastFoldersGridSize: 58
   m_LastProjectPath: C:\Users\User\Documents\GitHub\3D_Grapple_Game\GrappleChimp
@@ -574,9 +607,15 @@ MonoBehaviour:
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_SelectedIDs: 8e2c0000
     m_LastClickedID: 11406
     m_ExpandedIDs: 00000000b62b000012300000143000001630000000ca9a3b
+=======
+    m_SelectedIDs: fe2e0000
+    m_LastClickedID: 12030
+    m_ExpandedIDs: 00000000442d000082300000843000008630000000ca9a3b
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
     m_SelectedIDs: fe2e0000
     m_LastClickedID: 12030
@@ -610,7 +649,11 @@ MonoBehaviour:
     m_SelectedIDs: 60e4faff
     m_LastClickedID: -334752
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000b62b0000123000001430000016300000
+=======
+    m_ExpandedIDs: 00000000442d0000823000008430000086300000
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
 =======
     m_ExpandedIDs: 00000000442d0000823000008430000086300000
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
@@ -749,15 +792,21 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
 <<<<<<< HEAD
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 4e2e0000
     m_LastClickedID: 0
     m_ExpandedIDs: 202deaffc6fbffff00000000f22e0000402f00006a2f0000b62f0000
 =======
+=======
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
     scrollPos: {x: 0, y: 59}
     m_SelectedIDs: 622c0000
     m_LastClickedID: 0
     m_ExpandedIDs: c2f3ffff000000001630000024300000
+<<<<<<< HEAD
+>>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
+=======
 >>>>>>> ae598a2f1d4494b414b8c8db6e16a7f56b749bf7
     m_RenameOverlay:
       m_UserAcceptedRename: 0
