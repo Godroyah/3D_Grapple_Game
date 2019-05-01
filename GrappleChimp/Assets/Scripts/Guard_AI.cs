@@ -22,6 +22,7 @@ public class Guard_AI : MonoBehaviour {
     public float patrolTimerStart;
     private float patrolTimer;
     private float timerCount;
+    public float attackTimer;
 
     public bool follow;
     public bool patroling;
@@ -53,8 +54,11 @@ public class Guard_AI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+        attackTimer -= 0.1f;
         float playerDist = Vector3.Distance(playerLoc.transform.position, this.transform.position);
+
+        if (!follow)
+            enemyAgent.stoppingDistance = 0;
 
         if(playerController.sneaking)
         {
@@ -70,7 +74,7 @@ public class Guard_AI : MonoBehaviour {
             PursuePlayer();
             patroling = false;
             follow = true;
-            Debug.Log("Chasing!");
+            //Debug.Log("Chasing!");
         }
         else if (playerDist > followDist)
         {
@@ -138,6 +142,28 @@ public class Guard_AI : MonoBehaviour {
         return navHit.position;
     }
 
+    void OnTriggerStay(Collider other)
+    {
+        Debug.Log("Touching!");
+        if(other.CompareTag("Player"))
+        {
+            if(attackTimer <= 0)
+            {
+                attack = true;
+                attackTimer = 10.0f;
+            }
+            else
+            {
+                attack = false;
+            }
+            if(attack)
+            {
+                playerController.health -= 1;
+            }
+        }
+    }
+
+
     void SetPatrolPoint()
     {
         if(patrolPoints.Length > 0)
@@ -183,7 +209,13 @@ public class Guard_AI : MonoBehaviour {
     void PursuePlayer()
     {
         if(follow)
-        enemyAgent.SetDestination(playerLoc.transform.position);
+        {
+            enemyAgent.SetDestination(playerLoc.transform.position);
+            enemyAgent.stoppingDistance = 2.0f;
+        }
+        
+
+
         else if (!randomPatrol && strictPatrol && patroling)
         {
                 SetPatrolPoint();
