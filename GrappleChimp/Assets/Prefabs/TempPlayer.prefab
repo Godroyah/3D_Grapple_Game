@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mainCam: {fileID: 20816684691891060}
-  maxGrappleDist: 20
+  maxGrappleDist: 30
   pullSpeed: 5
   grappled: 0
 --- !u!114 &114296955813992794
@@ -349,7 +349,6 @@ MonoBehaviour:
   inAir: 0
   jumpTimer: 0
   jumpForce: 325
-  startSpawn: {fileID: 0}
 --- !u!135 &135184443070463774
 SphereCollider:
   m_ObjectHideFlags: 1
