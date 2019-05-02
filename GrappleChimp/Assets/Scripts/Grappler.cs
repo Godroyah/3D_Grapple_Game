@@ -37,7 +37,7 @@ public class Grappler : MonoBehaviour {
 
         float dist = Vector3.Distance(transform.position, grappleTarget);
 
-        if(dist <= 1.0f)
+        if(dist <= 2.5f)
         {
             grappled = false;
         }

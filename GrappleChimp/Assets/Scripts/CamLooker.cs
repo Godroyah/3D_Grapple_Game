@@ -38,9 +38,9 @@ public class CamLooker : MonoBehaviour
 
         xClamp += mouseY;
 
-        if (xClamp > 25.0f)
+        if (xClamp > 50.0f)
         {
-            xClamp = 25.0f;
+            xClamp = 50.0f;
             mouseY = 0.0f;
             ClampXAxis(205.0f);
             transform.localRotation = Quaternion.identity;
