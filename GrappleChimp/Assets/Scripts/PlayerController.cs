@@ -5,9 +5,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private float moveSpeed;
+    [SerializeField]
+    private float currentSpeed;
+    public float sprintSpeed;
     public float fullSpeed;
     public float sneakSpeed;
     public bool sneaking;
+    public bool sprint;
     public int health;
     public bool dead;
     public bool inAir;
@@ -17,10 +21,12 @@ public class PlayerController : MonoBehaviour {
     private float jumpTimer;
     public float jumpForce;
     private Rigidbody rb;
+    private Animator playerAnim;
 
 	// Use this for initialization
 	void Start ()
     {
+        playerAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         moveSpeed = fullSpeed;
         this.transform.position = GameObject.FindWithTag("StartSpawn").transform.position;
@@ -31,6 +37,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        
         jumpTimer -= 0.1f;
 
         if(Input.GetButton("Sneak"))
@@ -45,6 +52,24 @@ public class PlayerController : MonoBehaviour {
         if(sneaking)
         {
             moveSpeed = sneakSpeed;
+        }
+        else
+        {
+            moveSpeed = fullSpeed;
+        }
+
+        if(Input.GetButton("Sprint"))
+        {
+            sprint = true;
+        }
+        else
+        {
+            sprint = false;
+        }
+
+        if(sprint)
+        {
+            moveSpeed = sprintSpeed;
         }
         else
         {
@@ -72,15 +97,26 @@ public class PlayerController : MonoBehaviour {
         }
 
         PlayerMovement();
+
+        playerAnim.SetBool("Sneaking", sneaking);
+        playerAnim.SetBool("Sprinting", sprint);
+        playerAnim.SetBool("Dead", dead);
+        playerAnim.SetBool("InAir", inAir);
     }
 
     void PlayerMovement()
     {
+        currentSpeed = new Vector2(horizontal, vertical).sqrMagnitude;
+        
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        Vector3 playerMove = new Vector3(horizontal, 0f, vertical) * moveSpeed * Time.deltaTime;
+        Vector3 playerInput = new Vector3(horizontal, 0f, vertical);
+        Vector3 playerMove = Vector3.ClampMagnitude(playerInput, 1.0f) * moveSpeed * Time.deltaTime;
         transform.Translate(playerMove, Space.Self);
+        playerAnim.SetFloat("Speed", currentSpeed);
     }
+
+    
 
     //public IEnumerator TakeDamage()
     //{

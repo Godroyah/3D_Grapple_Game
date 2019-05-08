@@ -7,20 +7,33 @@ public class Grappler : MonoBehaviour {
     public Camera mainCam;
     public float maxGrappleDist;
     public float pullSpeed;
+    private Animator playerAnim;
 
     private Vector3 grappleTarget;
+    [SerializeField]
+    private bool aiming = false;
     public bool grappled = false;
 
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {
+        playerAnim = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-	    if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0))
+        {
+            aiming = true;
+        }
+        else
+        {
+            aiming = false;
+        }
+
+	    if(Input.GetMouseButtonUp(0))
         {
             GrappleRay();
         }
@@ -29,7 +42,9 @@ public class Grappler : MonoBehaviour {
         {
             PlayerGrappled();
         }
-	}
+        playerAnim.SetBool("Aiming", aiming);
+        playerAnim.SetBool("Grappled", grappled);
+    }
 
     private void PlayerGrappled()
     {
@@ -46,6 +61,7 @@ public class Grappler : MonoBehaviour {
     private void GrappleRay()
     {
         Ray grappleRay = mainCam.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(mainCam.transform.position, Input.mousePosition, Color.red);
         RaycastHit hit;
 
         if(Physics.Raycast(grappleRay, out hit, maxGrappleDist))
@@ -54,6 +70,7 @@ public class Grappler : MonoBehaviour {
             {
                 grappleTarget = hit.point;
                 grappled = true;
+                aiming = false;
             }
         }
     }

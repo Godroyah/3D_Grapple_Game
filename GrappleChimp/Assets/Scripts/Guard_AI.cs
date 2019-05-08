@@ -11,7 +11,7 @@ public class Guard_AI : MonoBehaviour {
 
     public Transform[] patrolPoints;
     private NavMeshAgent enemyAgent;
-    public GameObject playerLoc;
+    private GameObject playerLoc;
     private PlayerController playerController;
     private float followDist;
     public float regularDist;
@@ -34,6 +34,8 @@ public class Guard_AI : MonoBehaviour {
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
+
+        playerLoc = GameObject.FindGameObjectWithTag("Player");
 
         if (!randomPatrol && strictPatrol && patroling)
             SetPatrolPoint();
