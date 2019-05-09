@@ -7,6 +7,8 @@ public class Grappler : MonoBehaviour {
     public Camera mainCam;
     public float maxGrappleDist;
     public float pullSpeed;
+    [SerializeField]
+    private float layerWeight;
     private Animator playerAnim;
 
     private Vector3 grappleTarget;
@@ -31,6 +33,23 @@ public class Grappler : MonoBehaviour {
         else
         {
             aiming = false;
+        }
+
+        if(aiming)
+        {
+            if(layerWeight < 1.0f)
+            {
+                layerWeight += 0.1f;
+            }
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), layerWeight);
+        }
+        else
+        {
+            if(layerWeight > 0.0f)
+            {
+                layerWeight -= 0.1f;
+            }
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), layerWeight);
         }
 
 	    if(Input.GetMouseButtonUp(0))
