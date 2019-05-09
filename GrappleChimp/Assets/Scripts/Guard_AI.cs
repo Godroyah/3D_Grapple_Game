@@ -13,6 +13,7 @@ public class Guard_AI : MonoBehaviour {
     private NavMeshAgent enemyAgent;
     private GameObject playerLoc;
     private PlayerController playerController;
+    private Animator guardAnim;
     private float followDist;
     public float regularDist;
     public float sneakDist;
@@ -23,16 +24,19 @@ public class Guard_AI : MonoBehaviour {
     private float patrolTimer;
     private float timerCount;
     public float attackTimer;
+    private float agentDist;
 
     public bool follow;
     public bool patroling;
     public bool attack;
+    public bool idle;
     //public bool retreat;
 
     //public GameObject currentTarget;
 
     private void Awake()
     {
+        guardAnim = GetComponent<Animator>();
         enemyAgent = GetComponent<NavMeshAgent>();
 
         playerLoc = GameObject.FindGameObjectWithTag("Player");
@@ -56,6 +60,19 @@ public class Guard_AI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        agentDist = enemyAgent.remainingDistance;
+        if(agentDist != Mathf.Infinity && enemyAgent.pathStatus == NavMeshPathStatus.PathComplete)
+        {
+            idle = true;
+        }
+        else
+        {
+            idle = false;
+        }
+
+        guardAnim.SetBool("Follow", follow);
+        guardAnim.SetBool("Idle", idle);
+        guardAnim.SetBool("Patrol", patroling);
         attackTimer -= 0.1f;
         float playerDist = Vector3.Distance(playerLoc.transform.position, this.transform.position);
 
