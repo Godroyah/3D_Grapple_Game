@@ -10,6 +10,7 @@ public class Grappler : MonoBehaviour {
     [SerializeField]
     private float layerWeight;
     private Animator playerAnim;
+    private PlayerController playerController;
 
     private Vector3 grappleTarget;
     [SerializeField]
@@ -21,12 +22,13 @@ public class Grappler : MonoBehaviour {
 	void Start ()
     {
         playerAnim = GetComponent<Animator>();
+        playerController = GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(1) && !grappled)
         {
             aiming = true;
         }
@@ -52,7 +54,7 @@ public class Grappler : MonoBehaviour {
             playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), layerWeight);
         }
 
-	    if(Input.GetMouseButtonUp(0))
+	    if(Input.GetMouseButtonUp(0) && aiming)
         {
             GrappleRay();
         }
