@@ -13,6 +13,7 @@ public class Guard_AI : MonoBehaviour {
     private NavMeshAgent enemyAgent;
     private GameObject playerLoc;
     private PlayerController playerController;
+    public GameObject billClub;
     private Animator guardAnim;
     private float followDist;
     public float regularDist;
@@ -25,6 +26,7 @@ public class Guard_AI : MonoBehaviour {
     private float timerCount;
     public float attackTimer;
     private float agentDist;
+    private float startTimer;
 
     public bool follow;
     public bool patroling;
@@ -55,13 +57,22 @@ public class Guard_AI : MonoBehaviour {
         patrolTimer = patrolTimerStart;
         timerCount = patrolTimer;
         patroling = true;
+        startTimer = 3.0f;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
+        startTimer -= 0.1f;
+        guardAnim.SetBool("Follow", follow);
+        guardAnim.SetBool("Idle", idle);
+        guardAnim.SetBool("Patrol", patroling);
+        guardAnim.SetFloat("StartTimer", startTimer);
+        attackTimer -= 0.1f;
+
         agentDist = enemyAgent.remainingDistance;
-        if(agentDist != Mathf.Infinity && enemyAgent.pathStatus == NavMeshPathStatus.PathComplete)
+        //Debug.Log(agentDist);
+        if (agentDist == 0)
         {
             idle = true;
         }
@@ -69,11 +80,7 @@ public class Guard_AI : MonoBehaviour {
         {
             idle = false;
         }
-
-        guardAnim.SetBool("Follow", follow);
-        guardAnim.SetBool("Idle", idle);
-        guardAnim.SetBool("Patrol", patroling);
-        attackTimer -= 0.1f;
+        
         float playerDist = Vector3.Distance(playerLoc.transform.position, this.transform.position);
 
         if (!follow)
@@ -133,6 +140,8 @@ public class Guard_AI : MonoBehaviour {
             timerCount = 0f;
         }
 
+        
+
 	}
 
     void NextPatrolPoint()
@@ -166,6 +175,7 @@ public class Guard_AI : MonoBehaviour {
         Debug.Log("Touching!");
         if(other.CompareTag("Player"))
         {
+            guardAnim.SetBool("Attack", attack);
             if(attackTimer <= 0)
             {
                 attack = true;
@@ -229,10 +239,14 @@ public class Guard_AI : MonoBehaviour {
     {
         if(follow)
         {
+            billClub.SetActive(true);
             enemyAgent.SetDestination(playerLoc.transform.position);
-            enemyAgent.stoppingDistance = 2.0f;
+            enemyAgent.stoppingDistance = 1.5f;
         }
-        
+        else if(!follow)
+        {
+            billClub.SetActive(false);
+        }
 
 
         else if (!randomPatrol && strictPatrol && patroling)
