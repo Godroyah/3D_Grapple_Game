@@ -10,9 +10,11 @@ public class CamLooker : MonoBehaviour
     [SerializeField]
     float mouseX, mouseY;
     float offset;
+    private PlayerController playerCont;
 
     private void Start()
     {
+        playerCont = GetComponent<PlayerController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -27,7 +29,11 @@ public class CamLooker : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraRotation();
+        if(!playerCont.noInput)
+        {
+            CameraRotation();
+        }
+        
     }
 
     void CameraRotation()

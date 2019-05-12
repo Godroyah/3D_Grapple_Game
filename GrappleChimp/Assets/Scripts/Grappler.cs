@@ -30,7 +30,7 @@ public class Grappler : MonoBehaviour {
 	void Update ()
     {
         layerMask = ~layerMask;
-        if (Input.GetMouseButton(1) && !grappled)
+        if (Input.GetMouseButton(1) && !grappled && !playerController.noInput)
         {
             aiming = true;
         }

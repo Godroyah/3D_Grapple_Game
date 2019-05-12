@@ -9,6 +9,7 @@ TagManager:
   - StartSpawn
   - Idle_box
   - Gem
+  - Winner
   layers:
   - Default
   - TransparentFX
