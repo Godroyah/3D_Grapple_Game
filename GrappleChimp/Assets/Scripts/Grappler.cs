@@ -8,9 +8,10 @@ public class Grappler : MonoBehaviour {
     public float maxGrappleDist;
     public float pullSpeed;
     [SerializeField]
-    private float layerWeight;
+    private float aimLayerWeight;
     private Animator playerAnim;
     private PlayerController playerController;
+    private int layerMask = 1 << 9;
 
     private Vector3 grappleTarget;
     [SerializeField]
@@ -28,6 +29,7 @@ public class Grappler : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        layerMask = ~layerMask;
         if (Input.GetMouseButton(1) && !grappled)
         {
             aiming = true;
@@ -39,27 +41,28 @@ public class Grappler : MonoBehaviour {
 
         if(aiming)
         {
-            if(layerWeight < 1.0f)
+            if(aimLayerWeight < 1.0f)
             {
-                layerWeight += 0.1f;
+                aimLayerWeight += 0.1f;
             }
-            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), layerWeight);
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), aimLayerWeight);
         }
         else
         {
-            if(layerWeight > 0.0f)
+            if(aimLayerWeight > 0.0f)
             {
-                layerWeight -= 0.1f;
+                aimLayerWeight -= 0.1f;
             }
-            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), layerWeight);
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), aimLayerWeight);
         }
 
 	    if(Input.GetMouseButtonUp(0) && aiming)
         {
+            
             GrappleRay();
         }
 
-        if(grappled)
+        if(grappled && !playerController.pickedUp)
         {
             PlayerGrappled();
         }
@@ -82,15 +85,18 @@ public class Grappler : MonoBehaviour {
     private void GrappleRay()
     {
         Ray grappleRay = mainCam.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(mainCam.transform.position, Input.mousePosition, Color.red);
+        //Debug.DrawRay(mainCam.transform.position, Input.mousePosition, Color.red);
         RaycastHit hit;
 
-        if(Physics.Raycast(grappleRay, out hit, maxGrappleDist))
+        if(Physics.Raycast(grappleRay, out hit, maxGrappleDist, layerMask))
         {
-            if(hit.collider.CompareTag("GrappleTarget"))
+            Debug.Log("Fire");
+            if (hit.collider.CompareTag("GrappleTarget"))
             {
+                
                 grappleTarget = hit.point;
                 grappled = true;
+                playerController.inAir = true;
                 aiming = false;
             }
         }

@@ -27,6 +27,7 @@ public class Guard_AI : MonoBehaviour {
     public float attackTimer;
     private float agentDist;
     private float startTimer;
+    private float hurtLayerWeight;
 
     public bool follow;
     public bool patroling;
@@ -140,6 +141,15 @@ public class Guard_AI : MonoBehaviour {
             timerCount = 0f;
         }
 
+        if(follow)
+        {
+            billClub.SetActive(true);
+        }
+        else if(!follow)
+        {
+            billClub.SetActive(false);
+        }
+
         
 
 	}
@@ -239,13 +249,8 @@ public class Guard_AI : MonoBehaviour {
     {
         if(follow)
         {
-            billClub.SetActive(true);
             enemyAgent.SetDestination(playerLoc.transform.position);
-            enemyAgent.stoppingDistance = 1.5f;
-        }
-        else if(!follow)
-        {
-            billClub.SetActive(false);
+            enemyAgent.stoppingDistance = 1.0f;
         }
 
 

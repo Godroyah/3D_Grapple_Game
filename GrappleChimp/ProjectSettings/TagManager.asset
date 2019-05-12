@@ -8,6 +8,7 @@ TagManager:
   - GrappleTarget
   - StartSpawn
   - Idle_box
+  - Gem
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
+  - Player
   - 
   - 
   - 

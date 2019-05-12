@@ -10,9 +10,14 @@ public class PlayerController : MonoBehaviour {
     public float sprintSpeed;
     public float fullSpeed;
     public float sneakSpeed;
+    [SerializeField]
+    private float pickupTimer;
+    private float hitLayerWeight;
     public bool sneaking;
     public bool sprint;
     public int health;
+    public bool pickedUp;
+    private int currentHealth;
     public bool dead;
     public bool inAir;
     private float horizontal;
@@ -21,11 +26,16 @@ public class PlayerController : MonoBehaviour {
     private float jumpTimer;
     public float jumpForce;
     private Rigidbody rb;
-    private Animator playerAnim;
+    public GameObject attachGemHere;
+    [HideInInspector]
+    public Animator playerAnim;
+    private Collider meshBoy;
+    private Collider thisCollider;
 
 	// Use this for initialization
 	void Start ()
     {
+        currentHealth = health;
         playerAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         moveSpeed = fullSpeed;
@@ -37,7 +47,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        
+        pickupTimer -= 0.1f;
         jumpTimer -= 0.1f;
 
         if(Input.GetButton("Sneak"))
@@ -49,6 +59,27 @@ public class PlayerController : MonoBehaviour {
             sneaking = false;
         }
 
+        if(currentHealth > health)
+        {
+            if(hitLayerWeight < 1.0f)
+            {
+                hitLayerWeight += 0.01f;
+            }
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Hurt"), hitLayerWeight);
+            if(hitLayerWeight >= 1.0f)
+            {
+                currentHealth = health;
+            }
+        }
+        else if(currentHealth == health)
+        {
+            if (hitLayerWeight > 0.0f)
+            {
+                hitLayerWeight -= 0.01f;
+            }
+            playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Hurt"), hitLayerWeight);
+        }
+
         if(sneaking)
         {
             moveSpeed = sneakSpeed;
@@ -58,7 +89,7 @@ public class PlayerController : MonoBehaviour {
             moveSpeed = fullSpeed;
         }
 
-        if(Input.GetButton("Sprint"))
+        if(Input.GetButton("Sprint") && !pickedUp)
         {
             sprint = true;
         }
@@ -75,6 +106,8 @@ public class PlayerController : MonoBehaviour {
         {
             moveSpeed = fullSpeed;
         }
+
+
 
         if(Input.GetButton("Jump") && !inAir && jumpTimer <= 0)
         {
@@ -96,12 +129,30 @@ public class PlayerController : MonoBehaviour {
             health = 5;
         }
 
+        if (Input.GetButton("Interact") && currentSpeed < 0.1f && pickedUp && pickupTimer < 0)
+        {
+            attachGemHere.transform.DetachChildren();
+            pickedUp = false;
+            GameObject gemObject = GameObject.FindGameObjectWithTag("Gem");
+            SphereCollider gemSphere = gemObject.GetComponent<SphereCollider>();
+            MeshCollider gemMesh = gemObject.GetComponent<MeshCollider>();
+           // Rigidbody gemBody = gemObject.GetComponent<Rigidbody>();
+           // gemBody.isKinematic = false;
+            gemSphere.enabled = true;
+            gemMesh.enabled = true;
+            pickupTimer = 3.0f;
+            gemObject.transform.position = transform.position + this.transform.forward + new Vector3(0, transform.position.y + 0.25f, 0);
+            //gemObject.transform.position = new Vector3(gemObject.transform.position.x, gemObject.transform.position.y - 0.9f, gemObject.transform.position.x);
+            gemObject.transform.rotation = new Quaternion(0, 0, 0, 1);
+        }
+
         PlayerMovement();
 
         playerAnim.SetBool("Sneaking", sneaking);
         playerAnim.SetBool("Sprinting", sprint);
         playerAnim.SetBool("Dead", dead);
         playerAnim.SetBool("InAir", inAir);
+        playerAnim.SetBool("PickedUp", pickedUp);
     }
 
     void PlayerMovement()
@@ -116,26 +167,27 @@ public class PlayerController : MonoBehaviour {
         playerAnim.SetFloat("Speed", currentSpeed);
     }
 
-    
-
-    //public IEnumerator TakeDamage()
-    //{
-    //    yield return new WaitForSeconds(2);
-    //    health -= 1;
-    //    if (dead)
-    //    {
-    //        this.transform.position = startSpawn.transform.position;
-    //        this.transform.rotation = startSpawn.transform.rotation;
-    //        dead = false;
-    //        health = 5;
-    //    }
-    //}
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.CompareTag("Ground"))
         {
             inAir = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        thisCollider = other.GetComponent<SphereCollider>();
+        meshBoy = other.GetComponent<MeshCollider>();
+        if (other.tag == "Gem" && Input.GetButton("Interact") && currentSpeed < 0.1f && !pickedUp && pickupTimer < 0)
+        {
+            other.transform.parent = attachGemHere.transform;
+            pickedUp = true;
+            thisCollider.enabled = !thisCollider.enabled;
+            meshBoy.enabled = !meshBoy.enabled;
+            other.transform.localPosition = new Vector3(0.0045f, -0.006f, 0.0071f);
+            other.transform.localRotation = new Quaternion(-40.76f, -108.4f, -75.29f, 1);
+            pickupTimer = 3.0f;
         }
     }
 }
