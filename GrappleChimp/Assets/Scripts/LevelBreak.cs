@@ -42,7 +42,7 @@ public class LevelBreak : MonoBehaviour {
         player.transform.rotation = GameObject.FindWithTag("StartSpawn").transform.rotation; ;
         playerController.health = 5;
         playerController.currentHealth = playerController.health;
-        //healthSlider.value = playerController.health;
+        healthSlider.value = playerController.health;
         playerController.dead = false;
         animator.SetBool("Fade", false);
         playerController.fadeDelay = 10.0f;

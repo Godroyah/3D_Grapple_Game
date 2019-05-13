@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
@@ -38,6 +39,7 @@ public class PlayerController : MonoBehaviour {
     private Collider thisCollider;
     private LevelBreak levelBreak;
     private GameObject gemObject;
+    public Slider healthSlider;
 
     // Use this for initialization
     void Start ()
@@ -56,8 +58,9 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-            pickupTimer -= 0.1f;
-            jumpTimer -= 0.1f;
+        pickupTimer -= 0.1f;
+        jumpTimer -= 0.1f;
+        healthSlider.value = health;
 
         if (fadeDelay < -20.0f)
         {

@@ -12,14 +12,14 @@ public class GameController : MonoBehaviour {
     private PlayerController playerController;
     public GameObject player;
     //public Animator levelAnim;
-    //public Text winText;
+    public Text winText;
 
     // Use this for initialization
     void Start()
     {
         winnaBox = GetComponent<BoxCollider>();
         playerController = player.GetComponent<PlayerController>();
-        //winText.enabled = false;
+        winText.enabled = false;
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour {
         {
             //Debug.Log("You Won");
             winnaCountDown -= 0.1f;
-            //winText.enabled = true;
+            winText.enabled = true;
             if (winnaCountDown <= 0.0f)
             {
                 Debug.Log("BackToMenu");
