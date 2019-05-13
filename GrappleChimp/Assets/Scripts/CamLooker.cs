@@ -6,7 +6,8 @@ public class CamLooker : MonoBehaviour
 {
     public float xClamp;
     public float rotSpeed;
-    public Transform Target, Player;
+    public Transform Target;
+    private GameObject Player;
     [SerializeField]
     float mouseX, mouseY;
     float offset;
@@ -14,7 +15,8 @@ public class CamLooker : MonoBehaviour
 
     private void Start()
     {
-        playerCont = GetComponent<PlayerController>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        playerCont = Player.GetComponent<PlayerController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -66,7 +68,7 @@ public class CamLooker : MonoBehaviour
         }
         else
         {
-            Player.Rotate(Vector3.up * mouseX);
+            Player.transform.Rotate(Vector3.up * mouseX);
             Target.transform.Rotate(Vector3.left * mouseY);
         }
 

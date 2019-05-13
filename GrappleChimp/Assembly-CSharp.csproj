@@ -65,6 +65,8 @@
     <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\Grappler.cs" />
     <Compile Include="Assets\Scripts\Guard_AI.cs" />
+    <Compile Include="Assets\Scripts\LevelBreak.cs" />
+    <Compile Include="Assets\Scripts\ObjectRotate.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />

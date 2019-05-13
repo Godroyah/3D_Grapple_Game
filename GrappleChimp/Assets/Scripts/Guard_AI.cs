@@ -8,7 +8,9 @@ public class Guard_AI : MonoBehaviour {
     public bool randomPatrol;
     public bool strictPatrol;
     public bool randPatrolTime;
+    public bool reset;
 
+    public Transform resetPos;
     public Transform[] patrolPoints;
     private NavMeshAgent enemyAgent;
     private GameObject playerLoc;
@@ -18,6 +20,8 @@ public class Guard_AI : MonoBehaviour {
     private float followDist;
     public float regularDist;
     public float sneakDist;
+    [SerializeField]
+    private float resetTimer = 30.0f;
 
     private int currentPatrolPoint = 0;
     public float patrolRadius = 30f;
@@ -28,6 +32,7 @@ public class Guard_AI : MonoBehaviour {
     private float agentDist;
     private float startTimer;
     private float hurtLayerWeight;
+    private float playerProximity;
 
     public bool follow;
     public bool patroling;
@@ -73,6 +78,31 @@ public class Guard_AI : MonoBehaviour {
 
         agentDist = enemyAgent.remainingDistance;
         //Debug.Log(agentDist);
+        playerProximity = Vector3.Distance(playerLoc.transform.position, transform.position);
+
+        if(playerController.dead)
+        {
+            resetTimer -= 0.1f;
+            if(resetTimer < 0)
+            {
+                transform.position = resetPos.position;
+                attack = false;
+                follow = false;
+                patroling = true;
+            }
+        }
+        else
+        {
+            resetTimer = 30.0f;
+        }
+        
+
+        if (reset)
+        {
+            this.transform.position = resetPos.transform.position;
+            reset = false;
+        }
+
         if (agentDist == 0)
         {
             idle = true;
@@ -150,9 +180,25 @@ public class Guard_AI : MonoBehaviour {
             billClub.SetActive(false);
         }
 
-        
+        if (playerProximity < 2.0f && !playerController.dead)
+        {
+            guardAnim.SetBool("Attack", attack);
+            if (attackTimer <= 0)
+            {
+                attack = true;
+                attackTimer = 10.0f;
+            }
+            else
+            {
+                attack = false;
+            }
+            if (attack)
+            {
+                playerController.health -= 1;
+            }
+        }
 
-	}
+    }
 
     void NextPatrolPoint()
     {
@@ -180,27 +226,11 @@ public class Guard_AI : MonoBehaviour {
         return navHit.position;
     }
 
-    void OnTriggerStay(Collider other)
-    {
-        Debug.Log("Touching!");
-        if(other.CompareTag("Player"))
-        {
-            guardAnim.SetBool("Attack", attack);
-            if(attackTimer <= 0)
-            {
-                attack = true;
-                attackTimer = 10.0f;
-            }
-            else
-            {
-                attack = false;
-            }
-            if(attack)
-            {
-                playerController.health -= 1;
-            }
-        }
-    }
+    //void OnTriggerStay(Collider other)
+    //{
+    //    //Debug.Log("Touching!");
+        
+    //}
 
 
     void SetPatrolPoint()
@@ -250,7 +280,7 @@ public class Guard_AI : MonoBehaviour {
         if(follow)
         {
             enemyAgent.SetDestination(playerLoc.transform.position);
-            enemyAgent.stoppingDistance = 1.0f;
+            enemyAgent.stoppingDistance = 1.5f;
         }
 
 

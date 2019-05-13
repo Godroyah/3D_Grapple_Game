@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1325,6 +1325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 332174598}
+  - component: {fileID: 332174599}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -1433,6 +1434,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &332174599
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 332174597}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 0}
 --- !u!1 &343125891
 GameObject:
   m_ObjectHideFlags: 0
@@ -8196,13 +8211,22 @@ MonoBehaviour:
   sprintSpeed: 3.5
   fullSpeed: 2
   sneakSpeed: 1
+  pickupTimer: 0
+  noInput: 0
+  hit: 0
   sneaking: 0
   sprint: 0
   health: 5
+  pickedUp: 0
+  currentHealth: 0
+  fadeDelay: 10
   dead: 0
   inAir: 0
   jumpTimer: 0
   jumpForce: 325
+  attachGemHere: {fileID: 0}
+  grappleGun: {fileID: 0}
+  playerAnim: {fileID: 0}
 --- !u!114 &1676267334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8218,7 +8242,7 @@ MonoBehaviour:
   mainCam: {fileID: 0}
   maxGrappleDist: 50
   pullSpeed: 5
-  layerWeight: 0
+  aimLayerWeight: 0
   aiming: 0
   grappled: 0
 --- !u!136 &1676267335
@@ -8262,7 +8286,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!95 &1676267338
 Animator:

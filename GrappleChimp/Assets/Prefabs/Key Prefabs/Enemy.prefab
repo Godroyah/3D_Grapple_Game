@@ -116,18 +116,23 @@ MonoBehaviour:
   randomPatrol: 0
   strictPatrol: 0
   randPatrolTime: 0
+  reset: 0
+  resetPos: {fileID: 0}
   patrolPoints:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  billClub: {fileID: 0}
   regularDist: 10
   sneakDist: 3
+  resetTimer: 30
   patrolRadius: 30
   patrolTimerStart: 10
   attackTimer: 0
   follow: 0
   patroling: 0
   attack: 0
+  idle: 0
 --- !u!136 &136506691874596186
 CapsuleCollider:
   m_ObjectHideFlags: 1

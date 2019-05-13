@@ -10,6 +10,7 @@ TagManager:
   - Idle_box
   - Gem
   - Winner
+  - Bandage
   layers:
   - Default
   - TransparentFX
