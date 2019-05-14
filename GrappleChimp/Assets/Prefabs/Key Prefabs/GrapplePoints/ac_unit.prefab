@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4242169190503000}
   - component: {fileID: 33871814447057926}
   - component: {fileID: 23201644124110526}
+  - component: {fileID: 64165883754112176}
   m_Layer: 0
   m_Name: ac_unit
   m_TagString: GrappleTarget
@@ -82,4 +83,18 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1235839715905918}
+  m_Mesh: {fileID: 4300000, guid: c43b935cffd133043af366cd8b86c7fb, type: 3}
+--- !u!64 &64165883754112176
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1235839715905918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: c43b935cffd133043af366cd8b86c7fb, type: 3}
