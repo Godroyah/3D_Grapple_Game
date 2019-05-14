@@ -36,7 +36,7 @@ GameObject:
   - component: {fileID: 4812642645099188}
   - component: {fileID: 33259125276574250}
   - component: {fileID: 23361813077481384}
-  - component: {fileID: 64415705937103638}
+  - component: {fileID: 64538514986296600}
   m_Layer: 0
   m_Name: hedgemazestraight:hedgemazestraight:pCube1
   m_TagString: Ground
@@ -229,7 +229,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352152504687772}
   m_Mesh: {fileID: 4300000, guid: c02a86f03f99ffe428465706e9e679a4, type: 3}
---- !u!64 &64415705937103638
+--- !u!64 &64538514986296600
 MeshCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -242,4 +242,4 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_SkinWidth: 0.01
-  m_Mesh: {fileID: 4300000, guid: 9d597f3f475216c449410aed89c267d1, type: 3}
+  m_Mesh: {fileID: 4300000, guid: c02a86f03f99ffe428465706e9e679a4, type: 3}
