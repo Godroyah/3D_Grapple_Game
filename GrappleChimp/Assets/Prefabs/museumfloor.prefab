@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64661237686062758}
   m_Layer: 0
   m_Name: museumfloor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +57,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 7143ded44edf1e94ba7011b992f2dd4e, type: 3}
+  - {fileID: 2100000, guid: 539e5ed12a5f4c144a29e6f948a31ea8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
