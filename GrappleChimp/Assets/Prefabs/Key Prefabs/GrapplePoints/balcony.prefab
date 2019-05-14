@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4485090728343408}
   - component: {fileID: 33557431597921688}
   - component: {fileID: 23518276889834014}
+  - component: {fileID: 65280649339550798}
   m_Layer: 0
   m_Name: balcony
   m_TagString: GrappleTarget
@@ -83,3 +84,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1818305513119410}
   m_Mesh: {fileID: 4300000, guid: 124ffa362de9e104999335481f00f23e, type: 3}
+--- !u!65 &65280649339550798
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1818305513119410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 488.65256, y: 151.42458, z: 238.9111}
+  m_Center: {x: 0.000015258789, y: -0.87286377, z: 0}
