@@ -21,16 +21,21 @@ public class Pause_Menu : MonoBehaviour
 
     void Update()
     {
+        Debug.Log(Cursor.lockState);
         if (Input.GetButtonDown("Cancel"))
         {
             if (paused)
             {
                 Resume();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
 
             else
             {
                 Pause();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
         }
     }

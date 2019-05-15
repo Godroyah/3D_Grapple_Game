@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/testinggreybox.unity
     guid: e3bce33e57164fc4db0fb38d22d6980c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TestRoom.unity
     guid: 2b12da85b50b26c40ac92265f66aa2df
   m_configObjects: {}

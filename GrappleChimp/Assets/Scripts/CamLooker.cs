@@ -21,14 +21,6 @@ public class CamLooker : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void Update()
-    {
-        //if (this.transform.rotation.z == -180.0f || this.transform.rotation.z == 180.0f)
-        //{
-        //    thisCam.rotation = new Quaternion (thisCam.rotation.x, thisCam.rotation.y, 0.0f, thisCam.rotation.w);
-        //}
-    }
-
     private void LateUpdate()
     {
         if(!playerCont.noInput)

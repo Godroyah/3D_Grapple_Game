@@ -15,8 +15,9 @@ public class Main_Menu : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {
+        Debug.Log(Cursor.lockState);	
 	}
 
     public void Play()
