@@ -2588,6 +2588,12 @@ Transform:
   m_Father: {fileID: 1252285381}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &959092519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114744509350089412, guid: b61e5cf5ff1cea844b99f9a6e3779304,
+    type: 2}
+  m_PrefabInternal: {fileID: 1515435654}
+  m_Script: {fileID: -98529514, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &963380221
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,6 +2924,15 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: aab2f853f9c318946848d1bed49ac0f3, type: 2}
+    - target: {fileID: 114951429931897392, guid: 94c0763e4a00d0b4b9332375b00a2e1a,
+        type: 2}
+      propertyPath: bullsEye
+      value: 
+      objectReference: {fileID: 959092519}
+    - target: {fileID: 4948257053638144, guid: 94c0763e4a00d0b4b9332375b00a2e1a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.0167
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c0763e4a00d0b4b9332375b00a2e1a, type: 2}
   m_IsPrefabAsset: 0
@@ -3631,6 +3646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30f84c36268718a4f96011744d5d4d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullsEye: {fileID: 0}
   mainCam: {fileID: 141326289}
   maxGrappleDist: 50
   pullSpeed: 5
@@ -5436,7 +5452,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4076886993938216, guid: 349b5b2dbeb0dba4a89920665e722513, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.74
+      value: 19.61
       objectReference: {fileID: 0}
     - target: {fileID: 4076886993938216, guid: 349b5b2dbeb0dba4a89920665e722513, type: 2}
       propertyPath: m_LocalPosition.y

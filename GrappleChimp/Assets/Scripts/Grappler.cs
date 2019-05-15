@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class Grappler : MonoBehaviour {
 
+    public RawImage bullsEye;
     public Camera mainCam;
     public float maxGrappleDist;
     public float pullSpeed;
@@ -56,11 +58,7 @@ public class Grappler : MonoBehaviour {
             playerAnim.SetLayerWeight(playerAnim.GetLayerIndex("Aiming"), aimLayerWeight);
         }
 
-	    if(Input.GetMouseButtonUp(0) && aiming)
-        {
-            
-            GrappleRay();
-        }
+        GrappleRay();
 
         if(grappled && !playerController.pickedUp)
         {
@@ -93,11 +91,18 @@ public class Grappler : MonoBehaviour {
             Debug.Log("Fire");
             if (hit.collider.CompareTag("GrappleTarget"))
             {
-                
-                grappleTarget = hit.point;
-                grappled = true;
-                playerController.inAir = true;
-                aiming = false;
+                bullsEye.color = Color.green;
+                if (Input.GetMouseButtonUp(0) && aiming)
+                {
+                    grappleTarget = hit.point;
+                    grappled = true;
+                    playerController.inAir = true;
+                    aiming = false;
+                }
+            }
+            else
+            {
+                bullsEye.color = Color.red;
             }
         }
     }
