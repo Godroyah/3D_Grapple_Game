@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine;
 
@@ -40,18 +41,23 @@ public class PlayerController : MonoBehaviour {
     private LevelBreak levelBreak;
     private GameObject gemObject;
     public Slider healthSlider;
+    private Scene menuScene;
 
     // Use this for initialization
     void Start ()
     {
+        menuScene = SceneManager.GetActiveScene();
         levelBreak = GameObject.FindObjectOfType<LevelBreak>();
         gemObject = GameObject.FindGameObjectWithTag("Gem");
         currentHealth = health;
         playerAnim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         moveSpeed = fullSpeed;
-        this.transform.position = GameObject.FindWithTag("StartSpawn").transform.position;
-        this.transform.rotation = GameObject.FindWithTag("StartSpawn").transform.rotation;
+        if(menuScene.name != "Main_Menu")
+        {
+            this.transform.position = GameObject.FindWithTag("StartSpawn").transform.position;
+            this.transform.rotation = GameObject.FindWithTag("StartSpawn").transform.rotation;
+        }
         dead = false;
 	}
 	
@@ -60,7 +66,8 @@ public class PlayerController : MonoBehaviour {
     {
         pickupTimer -= 0.1f;
         jumpTimer -= 0.1f;
-        healthSlider.value = health;
+        if (menuScene.name != "Main_Menu")
+            healthSlider.value = health;
 
         if (fadeDelay < -20.0f)
         {
