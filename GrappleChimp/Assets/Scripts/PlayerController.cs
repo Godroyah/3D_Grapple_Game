@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour {
         {
             this.transform.position = GameObject.FindWithTag("StartSpawn").transform.position;
             this.transform.rotation = GameObject.FindWithTag("StartSpawn").transform.rotation;
+
         }
         dead = false;
 	}
