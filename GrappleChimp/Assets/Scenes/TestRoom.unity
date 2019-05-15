@@ -2908,6 +2908,16 @@ Prefab:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 1874406259}
+    - target: {fileID: 23111187619484736, guid: 94c0763e4a00d0b4b9332375b00a2e1a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50b041abfc255b6428ecdb12d9597031, type: 2}
+    - target: {fileID: 23353927946460410, guid: 94c0763e4a00d0b4b9332375b00a2e1a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: aab2f853f9c318946848d1bed49ac0f3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c0763e4a00d0b4b9332375b00a2e1a, type: 2}
   m_IsPrefabAsset: 0
